@@ -83,6 +83,29 @@ class LinkedList {
     //         next : null
     //     }
     // }
+
+    reverse(){
+        let first = this.head
+        console.log("Firt - ", first)
+        this.tail = this.head
+        console.log("Tail - ", this.tail)
+        let second = first.next
+        console.log("second - ", second);
+        while(second){
+            let temp = second.next
+            console.log("temp ", temp);
+            second.next = first
+            console.log("second next " , second) ;
+            first = second
+            console.log("first new " , first) ;
+            second = temp
+            console.log("second new " , second) ;
+        }
+        this.head.next = null;
+        this.head = first
+        // console.log(this)
+        return this
+    }
 }
 
 class Node {
@@ -98,9 +121,10 @@ linkedList.prepend(8);
 linkedList.prepend(9);
 linkedList.append(4);
 linkedList.insert(2, 11);
-linkedList.print();
+// linkedList.print();
 linkedList.remove(2);
 linkedList.print();
+linkedList.reverse();
 // console.log(linkedList.append(4));
 // console.log(linkedList.append(7));
 // console.log(linkedList);
