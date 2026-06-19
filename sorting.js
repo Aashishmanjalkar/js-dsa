@@ -54,30 +54,47 @@ const insertionSort = (arr) => {
 insertionSort(arr)
 
 
-const mergeSort = (arr) => {
-    if(arr.length <= 1){
-        return arr
+// Helper function to merge two already sorted arrays
+function merge(left, right) {
+  let sortedArr = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+
+  // Compare elements from both arrays and push the smaller one
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      sortedArr.push(left[leftIndex]);
+      leftIndex++; 
+    } else {
+      sortedArr.push(right[rightIndex]);
+      rightIndex++;
     }
-    mid = Math.floor(arr.length/2)
-    let left = mergeSort(arr.slice(0, mid))
-    let right = mergeSort(arr.slice(mid))
-    return merge(left, right) 
-}
-merge = (left, right) => {
-    let result = []
-    let i = 0;      
-    let j = 0;
-    while(i < left.length && j < right.length){
-        if(left[i] < right[j]){                     
-            result.push(left[i])
-            i++
-        }               
-        else{                   
-            result.push(right[j])
-            j++
-        }           
-    }
-    return result
+  }
+
+  // Concatenate any remaining elements left over in either array
+  return sortedArr
+    .concat(left.slice(leftIndex))
+    .concat(right.slice(rightIndex));
 }
 
-mergeSort([1,4,8,3,2,5])
+// Main recursive function to split and sort the array
+function mergeSort(arr) {
+  // Base case: arrays with 0 or 1 elements are already sorted
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  // Find the middle index to split the array
+  const middle = Math.floor(arr.length / 2);
+  
+  // Split into left and right halves
+  const left = arr.slice(0, middle);
+  const right = arr.slice(middle);
+
+  // Recursively split and merge
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+// Example usage:
+const unsortedArray = [38, 27, 43, 3, 9, 82, 10];
+console.log(mergeSort(unsortedArray));
