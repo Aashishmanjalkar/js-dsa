@@ -198,4 +198,130 @@ function fibonacciIterative(n){ //o(n)
     }
     // console.log(arr[n])
 }
-fibonacciIterative(5)
+// fibonacciIterative(5)
+
+
+console.log("--------- Selection Sort --------------");
+function insertionSort(array) {
+     console.log(array);
+    for (let i = 1; i < array.length; i++) {
+        let current = array[i]
+        let j = i -1
+        console.log("current - ", current, "j: ", j, "array j " , array[j] ,"array: ", array);
+        while(j >= 0 && array[j] > current){ //Checks with the next element 
+            console.log(array[j+1] , array[j], "j: ", j);
+            array[j+1] = array[j]
+            console.log("after swap - ", array);
+            j--
+            console.log("after decrement - ", array, "j: ", j);
+        }
+        console.log(array , "j ", j);
+        array[j+1] = current
+        console.log("Final array -", array);
+
+    }
+}
+// insertionSort([29,10,16,37,14])
+
+
+// function insertionSort(array) {
+//     for (let i = 1; i < array.length; i++) {
+//         let min = i
+//         let temp = array[i]
+        
+//     }
+// }
+
+// insertionSort([4,1,3,9,8,7]);
+
+
+function bubbleSort(array) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j <  array.length - 1 ; j++) {
+            console.log(array, array[j], array[j+1]);
+            if(array[j] > array[j+1]){
+                let temp = array[j+1]
+                array[j+1] = array[j]
+                array[j] = temp
+                console.log(array);
+            }
+        }
+    }
+    console.log(array)
+}
+console.log("Bubble sort");
+//  bubbleSort([4,1,3,9,8,7]);
+
+const insertionSort2 = (arr) => {
+    for (let i = 1; i < arr.length; i++) {
+        let currentValue = arr[i]
+        let j = i-1
+        while (i >= 0 &&  arr[j] > currentValue) {
+            arr[j+1] = arr[j]
+            j--
+        }
+        arr[j+1] = currentValue
+    }
+    console.log("Insertion sort ", arr);
+}
+
+// insertionSort2([4,1,7,3]);
+
+
+const mergeSort = (arr) => {
+    if(arr.length <= 1){
+        return arr
+    }
+    let mid = Math.floor(arr.length/2)
+    let left = arr.slice(0, mid)
+    let right = arr.slice(mid)
+
+    return merge(mergeSort(left),  mergeSort(right))
+}
+
+const merge = (left, right) => {
+    let leftIndex = 0
+    let rightIndex = 0
+    let sortedArr = []
+    while(leftIndex < left.length && rightIndex < right.length){
+        if(left[leftIndex] < right[rightIndex]){
+            sortedArr.push(left[leftIndex])
+            leftIndex++
+        }else{
+            sortedArr.push(right[rightIndex])
+            rightIndex++
+        }
+    }
+    return  sortedArr.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
+}
+
+console.log("************** MERGE SORT ******************")
+console.log(mergeSort([4,1,7,3])    )
+
+function dd(...args) {
+    console.log(...args);
+    process.exit(1); // Stops the entire Node process
+}
+
+
+console.log("********** QUICK SORT ******************")
+
+function quickSort(arr){
+    if(arr.length <= 1){
+        return arr
+    }
+    let left = []
+    let right = []
+    let pivot = arr[arr.length - 1]
+    
+    for (let i = 0; i < arr.length -1; i++) {
+       if(arr[i] < pivot){
+            left.push(arr[i])
+       }else{
+            right.push(arr[i])
+       }
+    }
+    return [...quickSort(left), pivot, ...quickSort(right)]
+
+}
+console.log(quickSort([4,1,7,3]))
