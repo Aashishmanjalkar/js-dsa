@@ -324,4 +324,72 @@ function quickSort(arr){
     return [...quickSort(left), pivot, ...quickSort(right)]
 
 }
-console.log(quickSort([4,1,7,3]))
+// console.log(quickSort([4,1,7,3]))
+
+class Tree {
+    constructor(){
+        this.root = null
+    }
+
+    insert(value){
+        const node = new Node(value)
+        if(this.root === null){
+            this.root = node
+        } else {
+            let currentNode = this.root
+            while (true) {
+                if(value < currentNode.value){
+                    if(!currentNode.left){
+                        currentNode.left = node
+                        return this
+                    }
+                    currentNode = currentNode.left
+                } else {
+                     if(!currentNode.right){
+                        currentNode.right = node
+                                                return this
+                    }
+                    currentNode = currentNode.right
+                }
+            }
+        }
+        return this
+    }
+
+    lookup(value) {
+        if (this.root == null) {
+            return null
+        }
+        let currentNode = this.root
+        while (currentNode) {
+            if (value < currentNode.value) {
+               currentNode = currentNode.left 
+            } else if(value > currentNode.value) {
+                currentNode = currentNode.right
+            } else if (value === currentNode.value){
+                return currentNode
+            }
+        }
+        return null
+    }
+
+}
+console.log('*************** TREE **************')
+
+let tree2 = new Tree()
+tree2.insert(5)
+tree2.insert(2)
+tree2.insert(4)
+tree2.insert(1)
+tree2.insert(7)
+tree2.insert(8)
+
+console.log(JSON.stringify(tree2))
+console.log(JSON.stringify(traverse22(tree2.root)))
+
+function traverse22(node){
+    const tree = {value : node.value}
+    tree.left = node.left === null ? null : traverse22(node.left)
+    tree.right = node.right === null ? null : traverse22(node.right)
+    return tree
+}
