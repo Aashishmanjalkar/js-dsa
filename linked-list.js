@@ -101,11 +101,26 @@ class LinkedList {
             second = temp
             console.log("second new " , second) ;
         }
-        this.head.next = null;
-        this.head = first
+            this.head.next = null;
+            this.head = first
         // console.log(this)
         return this
     }
+
+     reverseEasyMethod(){
+        let prev = null
+        let current = this.head
+        this.tail = this.head
+        while(current){
+            let next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        }
+        this.head = prev
+        return this
+    }
+
 }
 
 class Node {
