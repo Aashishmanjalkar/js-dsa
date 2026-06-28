@@ -18,7 +18,7 @@ class binarySearchTree{
             this.root = node
         } else {
             let currentNode = this.root;
-            console.log(currentNode)
+            ////console.log(currentNode)
             while (true) {
                 if(value < currentNode.value){
                     if(!currentNode.left){
@@ -59,17 +59,17 @@ class binarySearchTree{
 }
 
 const tree = new binarySearchTree()
-// tree.insert(5) 
-// tree.insert(7) 
-// tree.insert(1) 
-// tree.insert(8) 
-// console.log(tree.lookup(1)) 
-// traverse(tree.root) 
+tree.insert(5) 
+tree.insert(7) 
+tree.insert(1) 
+tree.insert(8) 
+// //console.log(tree.lookup(1)) 
+traverse(tree.root) 
 
 function traverse(node){
-    console.log("Node - ", node)
+    ////console.log("Node - ", node)
     const tree = {value : node.value}
-    console.log("tree created - ", tree)
+    ////console.log("tree created - ", tree)
     tree.left = node.left === null ? null : traverse(node.left)
     tree.right = node.right === null ? null : traverse(node.right)
     return tree
@@ -114,7 +114,7 @@ class linkedList{
         leader.next = node
         node.next = holdingPointer
         this.length++
-        // console.log("Holding pointer - ", holdingPointer)
+        // //console.log("Holding pointer - ", holdingPointer)
     }
 
     getPointer(index){
@@ -129,8 +129,29 @@ class linkedList{
         }
     }
 
+    remove(index){
+        if(index <= 0){
+            let pointer = this.head
+            this.head = pointer.next
+            this.length--
+            return
+        }
+        if(index >= this.length){
+            let pointer = this.getPointer(this.length -1)
+            pointer.next = null
+            this.tail = pointer
+            this.length--
+            return
+        }
+        let leader = this.getPointer(index -1)
+        let holdingPointer = leader.next
+        leader.next = holdingPointer.next
+        this.length--
+        return
+    }
+
     printList(){
-         let currentNode = this.head
+        let currentNode = this.head
         let i = []
         while(currentNode){
             i.push(currentNode.value)
@@ -153,8 +174,10 @@ list.append(2)
 list.append(3)
 list.append(4)
 list.append(7)
-list.printList()
+// list.printList()
 list.insert(4, 8)
+list.printList()
+list.remove(9)
 list.printList()
 
 
@@ -165,14 +188,14 @@ function factorial(n){
     return n * factorial(n-1)
 }
 
-console.log(factorial(5))
+//console.log(factorial(5))
 
 function iteration(n){
     let t = 1
     for(i=n ; i > 0; i--){
         t = t * i
     }
-    console.log(t)
+    ////console.log(t)
 }
 iteration(5)
 
@@ -181,43 +204,43 @@ function fibonacci(n){
     if(n < 2){
         return n
     }
-    console.log("n - ",  (fibonacci(n-1) + fibonacci(n-2)))
+    ////console.log("n - ",  (fibonacci(n-1) + fibonacci(n-2)))
     return fibonacci(n-1) + fibonacci(n-2)
 } 
 // 0(2^n)
 
-console.log(fibonacci(5))
+//console.log(fibonacci(5))
 
 // 0,1,1,2,3,5,8,13,21, 34 
 function fibonacciIterative(n){ //o(n)
     let arr = [0,1]
     for (let i = 2; i <= n; i++) {
-        // console.log(i ,arr[i-2] , arr[i - 1])
+        // //console.log(i ,arr[i-2] , arr[i - 1])
         arr.push(arr[i-2] + arr[i - 1])
-        // console.log(arr)
+        // //console.log(arr)
     }
-    // console.log(arr[n])
+    // //console.log(arr[n])
 }
 // fibonacciIterative(5)
 
 
-console.log("--------- Selection Sort --------------");
+//console.log("--------- Selection Sort --------------");
 function insertionSort(array) {
-     console.log(array);
+     ////console.log(array);
     for (let i = 1; i < array.length; i++) {
         let current = array[i]
         let j = i -1
-        console.log("current - ", current, "j: ", j, "array j " , array[j] ,"array: ", array);
+        ////console.log("current - ", current, "j: ", j, "array j " , array[j] ,"array: ", array);
         while(j >= 0 && array[j] > current){ //Checks with the next element 
-            console.log(array[j+1] , array[j], "j: ", j);
+            ////console.log(array[j+1] , array[j], "j: ", j);
             array[j+1] = array[j]
-            console.log("after swap - ", array);
+            ////console.log("after swap - ", array);
             j--
-            console.log("after decrement - ", array, "j: ", j);
+            ////console.log("after decrement - ", array, "j: ", j);
         }
-        console.log(array , "j ", j);
+        ////console.log(array , "j ", j);
         array[j+1] = current
-        console.log("Final array -", array);
+        ////console.log("Final array -", array);
 
     }
 }
@@ -238,18 +261,18 @@ function insertionSort(array) {
 function bubbleSort(array) {
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j <  array.length - 1 ; j++) {
-            console.log(array, array[j], array[j+1]);
+            ////console.log(array, array[j], array[j+1]);
             if(array[j] > array[j+1]){
                 let temp = array[j+1]
                 array[j+1] = array[j]
                 array[j] = temp
-                console.log(array);
+                ////console.log(array);
             }
         }
     }
-    console.log(array)
+    ////console.log(array)
 }
-console.log("Bubble sort");
+//console.log("Bubble sort");
 //  bubbleSort([4,1,3,9,8,7]);
 
 const insertionSort2 = (arr) => {
@@ -262,7 +285,7 @@ const insertionSort2 = (arr) => {
         }
         arr[j+1] = currentValue
     }
-    console.log("Insertion sort ", arr);
+    ////console.log("Insertion sort ", arr);
 }
 
 // insertionSort2([4,1,7,3]);
@@ -295,16 +318,16 @@ const merge = (left, right) => {
     return  sortedArr.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
 }
 
-console.log("************** MERGE SORT ******************")
-console.log(mergeSort([4,1,7,3])    )
+//console.log("************** MERGE SORT ******************")
+//console.log(mergeSort([4,1,7,3])    )
 
 function dd(...args) {
-    console.log(...args);
+    ////console.log(...args);
     process.exit(1); // Stops the entire Node process
 }
 
 
-console.log("********** QUICK SORT ******************")
+// //console.log("********** QUICK SORT ******************")
 
 function quickSort(arr){
     if(arr.length <= 1){
@@ -324,7 +347,7 @@ function quickSort(arr){
     return [...quickSort(left), pivot, ...quickSort(right)]
 
 }
-// console.log(quickSort([4,1,7,3]))
+// //console.log(quickSort([4,1,7,3]))
 
 class Tree {
     constructor(){
@@ -374,7 +397,7 @@ class Tree {
     }
 
 }
-console.log('*************** TREE **************')
+// //console.log('*************** TREE **************')
 
 let tree2 = new Tree()
 tree2.insert(5)
@@ -384,8 +407,8 @@ tree2.insert(1)
 tree2.insert(7)
 tree2.insert(8)
 
-console.log(JSON.stringify(tree2))
-console.log(JSON.stringify(traverse22(tree2.root)))
+// //console.log(JSON.stringify(tree2))
+// //console.log(JSON.stringify(traverse22(tree2.root)))
 
 function traverse22(node){
     const tree = {value : node.value}
