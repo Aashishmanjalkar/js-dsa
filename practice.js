@@ -396,6 +396,104 @@ class Tree {
         return null
     }
 
+    breadthFirstSearch(){
+        let list = []
+        let queue = []
+        let currentNode =  this.root
+        queue.push(currentNode)
+        while (queue.length > 0) {
+           currentNode = queue.shift()
+           list.push(currentNode.value)
+           if(currentNode.left){
+             queue.push(currentNode.left)
+           }
+            if(currentNode.right){
+             queue.push(currentNode.right)
+           }
+        }
+        return list
+    }
+
+    breadthFirstSearchRecursive(queue, list ){
+        console.log("**********  Recursive ***********")
+        if(!queue.length){
+            return list
+        }
+        let currentNode = queue.shift()
+        list.push(currentNode.value)
+        if(currentNode.left){
+            queue.push(currentNode.left)
+        }
+        if(currentNode.right){
+            queue.push(currentNode.right)
+        }
+        return this.breadthFirstSearchRecursive(queue, list)
+    }
+
+    DFSInOrder(){
+        console.log(" ******************* DFS IN ORDER *********************");
+        return traverseInOrder(this.root, [])
+    }
+
+    DFSPreOrder(){
+        return traversePreOrder(this.root, [])
+    }
+
+      DFSPostOrder(){
+        return traversePreOrder(this.root, [])
+    }
+
+}
+
+
+
+function traverseInOrder(currentNode, list){
+    console.log("Current Node - ",  JSON.stringify(currentNode));
+    if(currentNode.left){
+        console.log("current node left - ", list)
+        traverseInOrder(currentNode.left, list)
+    }
+    list.push(currentNode.value)
+    console.log("List - ", list)
+    if(currentNode.right){
+         console.log("current node right - ", list)
+        traverseInOrder(currentNode.right, list)
+    }
+    return list
+}
+
+//[ 5, 2, 7, 1, 4, 8 ]
+//          5
+//      2        7
+//   1     4         8
+
+function traversePreOrder(currentNode, list){
+    list.push(currentNode.value)
+    console.log("List - ", list)
+    if(currentNode.left){
+        console.log("current node left - ", list)
+        traversePreOrder(currentNode.left, list)
+    }
+    if(currentNode.right){
+         console.log("current node right - ", list)
+        traversePreOrder(currentNode.right, list)
+    }
+    return list
+}
+
+function traversePostOrder(currentNode, list){
+
+    if(currentNode.left){
+        console.log("current node left - ", list)
+        traversePostOrder(currentNode.left, list)
+    }
+    if(currentNode.right){
+         console.log("current node right - ", list)
+        traversePostOrder(currentNode.right, list)
+    }
+    list.push(currentNode.value)
+    console.log("List - ", list)
+    return list
 }
 // //console.log('*************** TREE **************')
 
@@ -406,6 +504,11 @@ tree2.insert(4)
 tree2.insert(1)
 tree2.insert(7)
 tree2.insert(8)
+// tree2.breadthFirstSearch()
+// tree2.breadthFirstSearchRecursive([tree2.root], [])
+// tree2.DFSInOrder(tree2.root, [])
+// tree2.DFSPreOrder(tree2.root, [])
+tree2.DFSPostOrder(tree2.root, [])
 
 // //console.log(JSON.stringify(tree2))
 // //console.log(JSON.stringify(traverse22(tree2.root)))
@@ -416,3 +519,7 @@ function traverse22(node){
     tree.right = node.right === null ? null : traverse22(node.right)
     return tree
 }
+
+
+// 92041628833-8b3fs4pvn6ni8c29kosn1cq80gio3rnf.apps.googleusercontent.com - Client ID
+//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 = Client Secret

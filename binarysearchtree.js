@@ -9,7 +9,6 @@ class binarySearchTree {
         this.root = node
     } else {
         let currentNode = this.root;
-        console.log(currentNode)
         while(true){
             if(value < currentNode.value){
                 if(!currentNode.left){
@@ -94,6 +93,12 @@ class binarySearchTree {
     }  
   
 }
+// [10, 6, 15, 3, 8, 20, 1, 12, 2, 7 , 4]
+//              10
+//          6           15
+//      3      8     12     29
+//    1  4   7
+//      2
 
 function traverseInOrder(node, list) {  
     if (node.left) {
