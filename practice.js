@@ -520,6 +520,3 @@ function traverse22(node){
     return tree
 }
 
-
-// 92041628833-8b3fs4pvn6ni8c29kosn1cq80gio3rnf.apps.googleusercontent.com - Client ID
-//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 = Client Secret
