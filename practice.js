@@ -520,3 +520,83 @@ function traverse22(node){
     return tree
 }
 
+
+class linkedListL1{
+    constructor(value){
+        this.head = {
+            val : value,
+            next : null
+        }
+        this.tail = this.head
+        this.length = 1
+    }
+
+    append(value){
+       let node = {
+            val : value,
+            next : null
+        }
+        this.tail.next = node
+        this.tail =  node
+        this.length++
+    }
+    prepend(value){
+        let node = {
+            val : value,
+            next : null
+        }
+        node.next = this.head
+        this.head = node
+        this.length++
+    }
+    printList(){
+        let arr = []
+        let curr = this.head
+        while(curr){
+            arr.push(curr.val)
+            curr = curr.next
+        }
+        console.log(arr)
+    }
+}
+console.log("Merge linked list");
+const list1 = new linkedListL1(5)
+list1.append(7)
+list1.prepend(2)
+list1.printList()
+
+const list2 = new linkedListL1(4)
+list2.append(8)
+list2.prepend(1)
+list2.printList()
+
+
+function mergeTwoSorted(list1, list2){
+     const arr = []
+    while(list1 !== null){
+        arr.push(list1.val)
+        list1 = list1.next
+    }
+    while(list2 !== null){
+        arr.push(list2.val)
+        list2 = list2.next
+    }
+    arr.sort((x,y) => x - y)
+    const dummy = new ListNode(0);
+    let curr = dummy
+    for(let value of arr){
+        let node = new ListNode(value)
+        curr.next = node
+        // console.log("Node - ", dummy) 
+        curr = node
+        // console.log("curr - ", curr) 
+    }
+    return dummy.next
+
+}
+
+function ListNode(val, next) {
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+ }
+mergeTwoSorted(list1.head, list2.head)
