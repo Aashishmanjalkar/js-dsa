@@ -109,7 +109,7 @@ function traverseInOrder(node, list) {
         traverseInOrder(node.right, list)
     }   
     return list
-}
+} // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 function traversePreOrder(node, list) {
     list.push(node.value)           
@@ -120,7 +120,7 @@ function traversePreOrder(node, list) {
         traversePreOrder(node.right, list)
     }           
     return list
-}
+} // [10, 6, 3, 1, 4, 2, 8, 7, 15, 12, 29]
 
 function traversePostOrder(node, list) {
     if (node.left) {
@@ -131,7 +131,7 @@ function traversePostOrder(node, list) {
     }
     list.push(node.value)
     return list
-}   
+}   // [2, 1, 4, 3, 7, 8, 6, 12, 29, 15, 10]
 
 class Node{
     constructor(value){
