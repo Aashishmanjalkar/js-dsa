@@ -23,17 +23,11 @@ var search = function(nums, target) {
 console.log(search([-1,0,3,5,9,12], 9))
 
 var searchInsert = function(nums, target) {
-    if(nums.length === 1){
-        if(target > nums[0]){
-            return 1
-        }
-        return 0
-    }
     let left = 0
     let right = nums.length -1
-    while(left <= right){
+    while(left <= right){ //Important Point Here to notice 
         let mid = Math.floor(left+ (right - left)/2)
-        console.log("Mid - ", mid, nums[mid] , nums[mid] < target)
+        // console.log("Mid - ", mid, nums[mid] , nums[mid] < target)
         if(nums[mid] == target){
             return mid
         } else if( nums[mid] < target){
@@ -42,7 +36,31 @@ var searchInsert = function(nums, target) {
             right = mid - 1
         }
     }
-    return left
+    return left // Second Important
 };
 
 console.log(searchInsert([1,3], 2))
+
+
+var searchRotate = function(nums, target) {
+
+    let left = 0
+    let right = nums.length - 1
+    while(left < right){
+        let mid = Math.floor(left + (right - left)/2)
+        if(nums[mid] === target){
+            return mid
+        }   else if( nums[mid] < target){
+            left = mid + 1
+        }  else if( nums[mid] > target){
+            right = mid - 1
+        }
+    }  
+    console.log(left, right)
+    
+    return -1
+};
+
+searchRotate([4,5,6,7,0,1,2], 0)
+// console.log(searchRotate([1,3], 3))
+// console.log(searchRotate([1], 0))
