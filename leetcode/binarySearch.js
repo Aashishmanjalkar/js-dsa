@@ -98,3 +98,22 @@ function binarySearch(nums, target, isLeft){
 }
 
 searchRange([5,7,7,8,8,10], 8) //34. Find First and Last Position of Element in Sorted Array
+
+
+var searchBST = function(root, val) {
+    let queue = []
+    queue.push(root)
+    while(queue.length > 0){
+        root = queue.shift()
+        if(root.val == val){
+            return root
+        }
+        if(root.left){
+            queue.push(root.left)
+        }
+        if(root.right){
+            queue.push(root.right)
+        }
+    }
+    return null
+};

@@ -54,7 +54,7 @@ var inorderTraversal = function(root) {
         // console.log("1 - root: ", root, "stack: ", stack)
         root = stack.pop()
         // console.log("2 - root: ", root, "stack: ", stack)
-        result.push(root.val);  // visit it
+        result.push(root.val);  // visit it 
         root = root.right;      // then explore its right subtre
         // console.log("3 - root: ", root, "result: ", result)
     }
