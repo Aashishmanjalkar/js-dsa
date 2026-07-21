@@ -168,3 +168,14 @@ function traverse(node){
     tree.right = node.right === null ? null : traverse(node.right)
     return tree
 }
+
+// [-8,-6,7,6,null,null,null,null,5]
+//        -8
+//       /  \
+//     -6     7
+//    /
+//    6
+//    \
+//     5
+
+// 
