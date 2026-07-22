@@ -1,3 +1,5 @@
+//Linked List Implementation of Queue - 
+// QUEUE - FIFO (First In First Out)
 class Queue {
     constructor(){
         this.head = null;

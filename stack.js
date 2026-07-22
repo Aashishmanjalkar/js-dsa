@@ -5,11 +5,14 @@ class Node  {
     }
 }
 
+
+//Linked List Implementation of Stack -
+// STACK - LIFO (Last In First Out)
 class Stack {
     constructor() {
         this.head = null
         this.tail = null
-        this.length = 1
+        this.length = 0
     }
 
     peek(){
