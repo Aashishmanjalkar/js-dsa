@@ -33,3 +33,28 @@ var twoSum2 = function(numbers, target) {
 }
 
 twoSum2([2,7,11,15], 9); //Sorted array using two pointer approach to find the two sum in O(n) time complexity and O(1) space complexity
+
+
+var merge = function(nums1, m, nums2, n) {
+    //Brute force
+    // const sortedArr = [...nums1.slice(0, m) ,... nums2.slice(0, n)].sort((a,b) => a - b)
+    // for(let i = 0; i < m+n ; i++){
+    //     nums1[i] = sortedArr[i]
+    // }
+
+//Two pointers approach
+    let i = m + n - 1
+    p1 = m-1
+    p2 = n-1
+    while(p2 >= 0){
+        if(p1 >= 0 && nums1[p1] > nums2[p2]){
+            nums1[i] = nums1[p1]
+            p1--
+        }else{
+            nums1[i] = nums2[p2]
+            p2--
+        }
+        i--
+    }
+};
+//leet code 88 merge sorted array
