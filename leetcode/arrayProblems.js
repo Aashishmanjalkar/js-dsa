@@ -58,3 +58,41 @@ var merge = function(nums1, m, nums2, n) {
     }
 };
 //leet code 88 merge sorted array
+
+// Boyer–Moore Voting Algorithm
+var majorityElement = function(nums) {
+    let candidate = 0, count = 0;
+    for (let num of nums) {
+        if (count === 0) {
+            candidate = num;
+        }
+        console.log(count,num, candidate)
+        if (num === candidate) {
+            count++;
+        } else {
+            count--;
+        }
+    }
+    return candidate;
+};
+
+// Brute force approach using hashmap
+var majorityElement2 = function(nums) {
+    const map = new Map();
+    const majorityCount = Math.floor(nums.length / 2); // Calculate the majority count
+    //  if an element appears more than n/2 times, it is the majority element 
+    // for example if the length of the array is 5, then the majority count is 2.5,
+    //  so if an element appears more than 2.5 times, it is the majority element.
+
+    for (let num of nums) {
+        let count = (map.get(num) || 0) + 1;
+        map.set(num, count);
+
+        if (count > majorityCount) {
+            return num;
+        }
+    }
+};
+
+majorityElement([3,2,3]); //Leet code 169 majority element problem using Boyer–Moore Voting Algorithm with O(n) time complexity and O(1) space complexity
+majorityElement2([3,2,3]); //Leet code 169 majority element problem using brute force approach with O(n) time complexity and O(n) space complexity
