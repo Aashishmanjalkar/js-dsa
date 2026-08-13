@@ -96,3 +96,22 @@ var majorityElement2 = function(nums) {
 
 majorityElement([3,2,3]); //Leet code 169 majority element problem using Boyer–Moore Voting Algorithm with O(n) time complexity and O(1) space complexity
 majorityElement2([3,2,3]); //Leet code 169 majority element problem using brute force approach with O(n) time complexity and O(n) space complexity
+
+
+
+var maxProfit = function(prices) {
+    let min = prices[0]
+    let max = 0
+    for(let i = 1; i < prices.length; i++){
+        // if(min > prices[i]){
+        //     min =  prices[i]
+        // } 
+        // let sub =  prices[i] - min
+        min = Math.min(min, prices[i])
+        max = Math.max(prices[i] - min, max)
+    }
+    return max
+};
+
+maxProfit([7,1,5,3,6,4]); //Leet code 121 best time to buy and sell stock problem with O(n)
+// time complexity and O(1) space complexity
