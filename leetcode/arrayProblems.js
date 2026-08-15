@@ -115,3 +115,27 @@ var maxProfit = function(prices) {
 
 maxProfit([7,1,5,3,6,4]); //Leet code 121 best time to buy and sell stock problem with O(n)
 // time complexity and O(1) space complexity
+
+
+var maxSubArray = function(nums) {
+    // Brute force O(n^2) time complexity and O(1) space complexity
+    // let max = nums[0]
+    // for(let i =0; i < nums.length;i++){
+    //     let n = 0
+    //     for(let j=i; j < nums.length;j++){
+    //         n += nums[j]
+    //         max = Math.max(n, max)
+    //     }
+    // }
+    // return max
+
+    //Kadane's algorithm O(n) time complexity and O(1) space complexity
+    let result = nums[0]
+    let max = nums[0]
+    for(let i = 1; i < nums.length; i++){
+        max = Math.max(max + nums[i], nums[i])
+        result = Math.max(max, result)
+    }
+    return result
+};
+maxSubArray([-2,1,-3,4,-1,2,1,-5,4]); //Leet code 53 maximum subarray problem with O(n) time complexity and O(1) space complexity
