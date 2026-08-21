@@ -139,3 +139,37 @@ var maxSubArray = function(nums) {
     return result
 };
 maxSubArray([-2,1,-3,4,-1,2,1,-5,4]); //Leet code 53 maximum subarray problem with O(n) time complexity and O(1) space complexity
+
+
+/**
+ * @param {number} x
+ * @param {number} n
+ * @return {number}
+ */
+var myPow = function(x, n) {
+    if(n < 0){
+        x = 1/x
+        n = Math.abs(n)
+    }
+    //Brute force approach O(n) time complexity and O(1) space complexity
+    // while(n > 0){
+    //     x *= x
+    //     n--
+    // }
+
+   return binaryExponentiation(x, n)
+};
+
+function binaryExponentiation(x, n){
+    let result = 1
+    while(n > 0){
+        if(n %2 === 1){
+            result *= x // If n is odd, multiply the result by x for example if x = 2 and n = 5, then 2^5 = 2 * 2^4, so we multiply the result by x when n is odd
+        }
+        x *= x
+        n = Math.floor(n/2)
+    }
+    return result
+}
+
+myPow(2, 10) //Leet code 50 pow(x, n) problem with O(log n) time complexity and O(1) space complexity
