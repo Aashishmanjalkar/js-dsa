@@ -173,3 +173,28 @@ function binaryExponentiation(x, n){
 }
 
 myPow(2, 10) //Leet code 50 pow(x, n) problem with O(log n) time complexity and O(1) space complexity
+
+
+var sortColors = function(nums) {
+    let low = 0
+    let mid = 0
+    let high = nums.length - 1
+    while(mid <= high){
+        if(nums[mid] === 0){
+            [nums[low], nums[mid]] =  [nums[mid], nums[low]]
+            low++
+            mid++
+        } else if(nums[mid] === 1){
+            mid++
+        }else{
+            [nums[mid], nums[high]] =  [nums[high], nums[mid]]
+            high--
+        }
+        // console.log("Nums ", nums)
+    }
+};
+sortColors([2,0,2,1,1,0]) //Leet code 75 sort colors problem with O(n) time complexity and O(1) space complexity
+//Dutch national flag problem 
+// 0s move left: When we find a 0, we push it to the low region
+// 2s move right: When we find a 2, we push it to the high region
+// 1s stay in middle: They're left untouched, naturally ending up in the center
