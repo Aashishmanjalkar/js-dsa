@@ -276,3 +276,36 @@ var invertTreeRecursive = function(root) {
 // **Final Output Array:** `[4, 7, 2, 9, 6, 3, 1]`
 
 invertTreeRecursive([4,2,7,1,3,6,9])
+
+// 852. Peak Index in a Mountain Array - Brute force approach - O(n) - Done
+var peakIndexInMountainArray = function(arr) {
+    let max = arr[0]
+    let left = 1
+    let right = arr.length - 1
+    while(left <= right){
+        if(arr[left] > max){
+            max = arr[left]
+            left++
+        } else {
+            return left - 1
+        }
+    }
+
+    // OPtimized Approach - O(log n)
+    //   let left = 0
+    // let right = arr.length -1
+    // while(left < right){
+    //     const mid = Math.floor(left + (right - left)/ 2)
+    //     if(arr[mid] < arr[mid + 1]){ // Important Point Here to notice compare with next element because we are looking for peak index in mountain array
+    //         left = mid + 1
+    //     }else{
+    //         right = mid 
+    //     }
+    // }
+
+    // return left
+};
+
+
+
+peakIndexInMountainArray([0,1,0])
