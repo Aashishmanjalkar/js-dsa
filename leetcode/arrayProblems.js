@@ -198,3 +198,39 @@ sortColors([2,0,2,1,1,0]) //Leet code 75 sort colors problem with O(n) time comp
 // 0s move left: When we find a 0, we push it to the low region
 // 2s move right: When we find a 2, we push it to the high region
 // 1s stay in middle: They're left untouched, naturally ending up in the center
+
+
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function(nums) {
+    nums.sort((a,b) => a -b)
+    let triplets = [];
+    for(let i=0; i < nums.length -2; i++){
+        if(nums[i] > 0) break;
+
+        if(i > 0 && nums[i] === nums[i - 1]) continue;
+
+        let left = i + 1
+        let right = nums.length - 1
+        while(left < right){
+            let sum = nums[i] + nums[left] + nums[right]
+            if(sum === 0){
+                triplets.push( [nums[i], nums[left], nums[right]])
+                left++;
+                right--;
+                // Skip duplicates for the left pointer
+                while (left < right && nums[left] === nums[left - 1]) left++;
+                // Skip duplicates for the right pointer
+                while (left < right && nums[right] === nums[right + 1]) right--;
+            } else if(sum < 0){
+                left++
+            }else{
+                right--
+            }
+        }
+    }
+    return triplets
+};
