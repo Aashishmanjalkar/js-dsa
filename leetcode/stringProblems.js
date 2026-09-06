@@ -21,4 +21,34 @@ var longestCommonPrefix = function(strs) {
     return str
 };
 
-longestCommonPrefix(["flower","flow","flight"])
+console.log(longestCommonPrefix(["flower","flow","flight"])) // Output: "fl" space complexity O(nlogn) for sorting and O(m) for comparing the first and last strings, where n is the number of strings and m is the length of the shortest string.   
+
+
+
+
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isAnagram = function(s, t) {
+    if(s.length != t.length) return false
+    let count = {}
+
+    for(let word of s){
+        count[word] = (count[word] || 0) + 1
+    }
+
+    for (const char of t) {
+        // console.log(count[char], char)
+        if (!count[char]) return false;
+        // console.log("first ", count)
+        count[char]--;
+        // console.log(count)
+    }
+
+    return true;
+};
+
+isAnagram("anagram", "nagaram") // Output: true
