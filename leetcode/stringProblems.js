@@ -52,3 +52,22 @@ var isAnagram = function(s, t) {
 };
 
 isAnagram("anagram", "nagaram") // Output: true
+
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reverseWords = function(s) {
+    return s.trim().replace(/ +/g, ' ').split(' ').reverse().join(' ')
+    // return s.trim('').split(' ').filter(word => isAlphanumericCode(word)).reverse().join(' ')
+};
+
+// function isAlphanumericCode(char) {
+//   if (!char) return false;
+  
+//   const code = char.charCodeAt(0);
+//   return (code > 47 && code < 58) ||  // Numeric (0-9)
+//          (code > 64 && code < 91) ||  // Uppercase (A-Z)
+//          (code > 96 && code < 123);   // Lowercase (a-z)
+// }
