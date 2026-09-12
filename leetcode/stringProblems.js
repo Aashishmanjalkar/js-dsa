@@ -27,6 +27,7 @@ console.log(longestCommonPrefix(["flower","flow","flight"])) // Output: "fl" spa
 
 
 
+
 /**
  * @param {string} s
  * @param {string} t
@@ -55,7 +56,7 @@ isAnagram("anagram", "nagaram") // Output: true
 
 
 /**
- * @param {string} s
+ * @param {string} 
  * @return {string}
  */
 var reverseWords = function(s) {
@@ -71,3 +72,22 @@ var reverseWords = function(s) {
 //          (code > 64 && code < 91) ||  // Uppercase (A-Z)
 //          (code > 96 && code < 123);   // Lowercase (a-z)
 // }
+
+var removeOccurrences = function(s, part) {
+    return recurrsiveSlicing(s, part)
+};
+
+function recurrsiveSlicing(s, part){
+    let i = 0
+    while(i <= s.length - part.length){
+        let str = s.slice(i, i+part.length)
+        if(str === part){
+            s = s.slice(0, i) +  s.slice(i + part.length, s.length)
+            return recurrsiveSlicing(s, part)
+        } 
+        i++
+   }
+   return s
+}
+
+removeOccurrences("daabcbaabcbc", "abc") // Output: "dab"
