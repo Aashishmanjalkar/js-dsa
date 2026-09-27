@@ -6,10 +6,10 @@ class doubleLinkedList {
             prev: null,
         }
         this.tail = this.head
-        this.lenght = 1
+        this.length = 1
     }
 
-      insert(index, value){
+    insert(index, value){
         if(index <= 0){
             return this.prepend(value)
         }
@@ -23,7 +23,7 @@ class doubleLinkedList {
         node.next = holdingPointer
         leader.next = node
         holdingPointer.prev = node
-         this.length++
+        this.length++
     }
 
     append(value){
@@ -35,7 +35,7 @@ class doubleLinkedList {
         newNode.prev = this.tail
         this.tail.next = newNode
         this.tail = newNode
-        this.lenght++
+        this.length++
     }
 
     prepend (value){
@@ -47,7 +47,7 @@ class doubleLinkedList {
         newNode.next = this.head
         this.head.prev = newNode
         this.head = newNode
-        this.lenght++ 
+        this.length++ 
     }
 
     printList(){
@@ -99,6 +99,16 @@ class doubleLinkedList {
         let temp = this.head
         this.head = this.tail
         this.tail = temp
+    }
+
+    traverse(index){
+        let counter = 0
+        let currentNode = this.head 
+        while(counter !== index){
+            currentNode = currentNode.next
+            counter++
+        }
+        return currentNode
     }
 
 }
