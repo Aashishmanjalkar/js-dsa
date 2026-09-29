@@ -84,3 +84,33 @@ var isHappy = function(n) {
     }
     return fast === 1;
 }
+
+
+/**
+ * String Compression leetcode 443
+ * @param {character[]} chars
+ * @return {number} 
+ */ 
+var compress = function(chars) {
+   let write = 0;
+   let read = 0
+   while(read < chars.length){
+    let currentChar = chars[read];
+    let count = 0;
+    while(read < chars.length && chars[read] === currentChar){
+        read++;
+        count++;
+    }
+    chars[write++] = currentChar
+    
+    if(count > 1){
+        const countStr = count.toString()
+        for(let i = 0; i < countStr.length; i++){
+            chars[write++] = countStr[i]
+        }
+    }
+   }
+   return write
+};
+
+compress(["a","a","b","b","c","c","c"]) // Output: 6, chars = ["a","2","b","2","c","3"]
