@@ -61,7 +61,7 @@ var searchRotate = function(nums, target) {
     return -1
 };
 
-searchRotate([4,5,6,7,0,1,2], 0)
+searchRotate([4,5,6,7,0,1,2], 0) // answer is 4 because the target 0 is at index 4 in the rotated sorted array [4,5,6,7,0,1,2]
 // console.log(searchRotate([1,3], 3))
 // console.log(searchRotate([1], 0))
 

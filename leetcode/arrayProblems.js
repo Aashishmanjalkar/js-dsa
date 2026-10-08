@@ -136,9 +136,9 @@ var maxSubArray = function(nums) {
         max = Math.max(max + nums[i], nums[i])
         result = Math.max(max, result)
     }
-    return result
+    return result // returns the maximum sum of a contiguous subarray within a one-dimensional array of numbers.
 };
-maxSubArray([-2,1,-3,4,-1,2,1,-5,4]); //Leet code 53 maximum subarray problem with O(n) time complexity and O(1) space complexity
+maxSubArray([-2,1,-3,4,-1,2,1,-5,4]); //Leet code 53 maximum subarray problem with O(n) time complexity and O(1) space complexity - ans is 6 because the contiguous subarray [4,-1,2,1] has the largest sum = 6.
 
 
 /**
@@ -193,7 +193,7 @@ var sortColors = function(nums) {
         // console.log("Nums ", nums)
     }
 };
-sortColors([2,0,2,1,1,0]) //Leet code 75 sort colors problem with O(n) time complexity and O(1) space complexity
+sortColors([2,0,2,1,1,0]) //Leet code 75 sort colors problem with O(n) time complexity and O(1) space complexity - ans is [0,0,1,1,2,2] after sorting the colors in-place.
 //Dutch national flag problem 
 // 0s move left: When we find a 0, we push it to the low region
 // 2s move right: When we find a 2, we push it to the high region

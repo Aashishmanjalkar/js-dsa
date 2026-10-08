@@ -5,7 +5,7 @@ var maxArea = function(height) {
     let right = width = height.length - 1
     while(left < right){
         let minHeight = Math.min(height[left] , height[right])
-        let area = minHeight * width
+        let area = minHeight * width // Important Point Here to notice
         if(area > max){
             max = area
         }
